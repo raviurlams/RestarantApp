@@ -1,0 +1,71 @@
+<form name="restaurantSetup" novalidate>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" name="name" ng-model="restaurantDetail.name" autocomplete="off" required class="form-control" placeholder="{{ 'Restaurant-NAME' | translate }}" />
+        </div>
+        <div class="input-error-label" ng-show="restaurantSetupSubmitted && restaurantSetup.name.$error.required"><span translate="REQUIRED-FIELD"></span></div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" name="address" required class="form-control" placeholder="{{ 'Address' | translate }}" autocomplete="off" g-places-autocomplete force-selection="true" ng-blur="isValidGoogleAddress(restaurantSetup)" ng-model="$parent.googlePlace" />
+        </div>
+        <div ng-messages="restaurantSetup.address.$error" ng-show="(restaurantSetup.$submitted || !restaurantSetup.address.$pristine)" class="input-error-label">
+            <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+            <div ng-message="pattern"><span translate="Invalid-Address"></span></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" name="phone" ng-model="restaurantDetail.phone" autocomplete="off" required class="form-control" phone-format maxlength="14" placeholder="{{ 'Phone-Number' | translate }}" />
+        </div>
+        <div ng-messages="restaurantSetup.phone.$error" ng-show="(restaurantSetup.$submitted || !restaurantSetup.phone.$pristine)" class="input-error-label">
+            <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+            <div ng-message="minlength"><span translate="MIN-10-DIGITS"></span></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" name="cuisine" ng-model="restaurantDetail.cuisine" autocomplete="off" required class="form-control" placeholder="{{ 'Cuisine' | translate }}" />
+        </div>
+        <div class="input-error-label" ng-show="restaurantSetupSubmitted && restaurantSetup.cuisine.$error.required"><span translate="REQUIRED-FIELD"></span></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 padding-top-20" translate="TABLE-SERVICE"></div>
+        <div class="col-xs-6 col-sm-3 padding-top-20">
+            <toggle-switch ng-model="restaurantDetail.tableService" class="switch-mini" on-label="{{ 'Yes-NAME' | translate }}" off-label="{{ 'No-NAME' | translate }}"></toggle-switch>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="input-group padding-top-10">
+                <input type="text" name="numberOfTables" ng-model="restaurantDetail.numberOfTables" autocomplete="off" class="form-control" numbers-only maxlength="2" autocomplete="off" ng-required="restaurantDetail.tableService" placeholder="{{ 'TOTAL-NO-OF_TABLE' | translate }}" />
+            </div>
+            <div ng-messages="restaurantSetup.numberOfTables.$error" ng-show="(restaurantSetup.$submitted || !restaurantSetup.numberOfTables.$pristine)" class="input-error-label">
+                <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                <div ng-message="pattern"><span translate="NO-OF-TABLE-REQ"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 padding-top-20" translate="TABLE-RESERVE"></div>
+        <div class="col-xs-6 col-sm-3 padding-top-20">
+            <toggle-switch ng-model="restaurantDetail.tableReservation" class="switch-mini" on-label="{{ 'Yes-NAME' | translate }}" off-label="{{ 'No-NAME' | translate }}" is-disabled="!restaurantDetail.tableService"></toggle-switch>
+        </div>
+        <div class="col-xs-6 col-sm-3 padding-top-20" translate="Delivery"></div>
+        <div class="col-xs-6 col-sm-3 padding-top-20">
+            <toggle-switch ng-model="restaurantDetail.deliveryService" class="switch-mini" on-label="{{ 'Yes-NAME' | translate }}" off-label="{{ 'No-NAME' | translate }}"></toggle-switch>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 padding-top-20" translate="Orderista-Yes"></div>
+        <div class="col-xs-6 col-sm-3 padding-top-20">
+            <toggle-switch ng-model="restaurantDetail.orderistaEnabled" class="switch-mini" on-label="{{ 'Yes-NAME' | translate }}" off-label="{{ 'No-NAME' | translate }}"></toggle-switch>
+        </div>
+        <div class="col-sm-6"></div>
+    </div>
+    <br><br>
+    <div class="bottom-bar right">
+        <div ng-show="isInvalidRestaurant" class="error-label center" ng-bind="message"></div>
+        <div ng-show="isRestaurantMsg" class="message-label center" ng-bind="message"></div>
+        <button class="btn btn-primary btn-sm" ng-click="onSaveRestaurantClick(restaurantSetup)" translate="SAVE"></button>
+    </div>
+</form>
+

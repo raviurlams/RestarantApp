@@ -1,0 +1,24 @@
+<div class="page-center">
+    <div>
+        <h5 class="center padding-b-15" translate="Restaurants" ></h5>
+        <div class="btn-group row col-sm-12" role="group">
+            <button type="button" ng-click="onRestaurantFinderToggle(1)" translate="My-Favorites" class="{{restaurantCurrentTabIndex === 1 | iif : 'btn btn-primary col-sm-4' : 'btn btn-default col-sm-4'}}" ></button>
+            <button type="button" ng-click="onRestaurantFinderToggle(2)" translate="NEAR-BY" class="{{restaurantCurrentTabIndex === 2 | iif : 'col-sm-4 btn btn-primary' : 'col-sm-4 btn btn-default'}}" ></button>
+            <button type="button" ng-click="onRestaurantFinderToggle(3)" translate="Manage" class="{{restaurantCurrentTabIndex === 3 | iif : 'col-sm-4 btn btn-primary' : 'col-sm-4 btn btn-default'}}" ></button>
+        </div>
+        <div class="row col-sm-12 padding-top-bottom-20" ng-show="restaurantCurrentTabIndex === 1">
+            {{ 'favorites' | translate }}
+        </div>
+        <div class="row col-sm-12 padding-top-bottom-20" ng-show="restaurantCurrentTabIndex === 2">
+            {{ 'NEAR-BY-CNT' | translate }}
+        </div>
+        <div class="row col-sm-12" ng-show="restaurantCurrentTabIndex === 3">
+            <div class="right padding-top-bottom-20">
+                <button class="btn btn-primary" ng-click="onSetupNewRestaurantClick()" translate="NEW-RESTARENT" ></button>
+            </div>
+            <div class="row" ng-repeat="restaurant in entitledRestaurants">
+                <div restaurant-info="restaurant" class="cursor-hand" ng-click="onRestaurantSelect(restaurant.restaurantID)"></div>
+            </div>
+        </div>
+    </div>
+</div>

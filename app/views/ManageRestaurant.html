@@ -1,0 +1,16 @@
+<div class="page-center">
+    <div>
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+        <a href="#/home" class="title-3" translate="BACK-LABEL"></a>
+    </div>
+    <div class="btn-group row col-sm-12 padding-top-10 padding-b-15" role="group">
+        <button type="button" ng-click="onRestaurantManageToggle(1)" class="{{restaurantManageTabIndex === 1 | iif : 'btn col-sm-4 btn-primary' : 'btn col-sm-4 btn-default'}}" translate="Restaurant"></button>
+        <button type="button" ng-click="onRestaurantManageToggle(2)" class="{{restaurantManageTabIndex === 2 | iif : 'btn col-sm-4 btn-primary' : 'btn col-sm-4 btn-default'}}" translate="Users"></button>
+        <button type="button" ng-click="onRestaurantManageToggle(3)" class="{{restaurantManageTabIndex === 3 | iif : 'btn col-sm-4 btn-primary' : 'btn col-sm-4 btn-default'}}" translate="Menu"></button>
+    </div>
+    <div ng-show="restaurantManageTabIndex === 1">
+        <div ng-include src="'views/RestaurantSetup.html'"></div>
+    </div>
+    <div ng-show="restaurantManageTabIndex === 2" translate="Users"></div>
+    <div ng-show="restaurantManageTabIndex === 3" translate="Menu"></div>
+</div>

@@ -1,0 +1,18 @@
+@media (max-width: $screen-xs-max) {
+    .top-header {
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .login-box {
+        margin-right: auto;
+        margin-left: auto;
+        float: none;
+    }
+
+    .page-center {
+        width: 100%;
+    }
+}
+

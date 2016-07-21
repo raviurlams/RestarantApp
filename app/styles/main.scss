@@ -1,0 +1,255 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+
+@import "main-variables";
+@import "bootstrap-override-variables";
+
+
+
+// bower:scss
+@import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+    font: 100% $font-stack;
+    color: $primary-font-color;
+    font-size: $primary-font-size;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+h5 {
+    font-size: $h5-font-size;
+}
+
+.top-header {
+    height: 71px;
+    margin: 10px;
+}
+
+.top-header-after-login {
+    height: 60px;
+    background-color: $brand-color;
+}
+
+.top-header-items {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.brand-color {
+    color: $brand-color !important;
+}
+
+.title-bar {
+    background-color: $brand-color;
+    color: #FFFFFF;
+    padding: 5px;
+}
+
+.title-3 {
+    font-size: 15px;
+    color: $title-color;
+}
+
+.box {
+    border: 1px solid $border;
+    border-radius: 5px;
+}
+
+.login-box {
+    width: 300px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: 5%;
+    background-color: $background;
+    float: right;
+    padding: 10px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $border;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+label {
+    font-weight: normal;
+}
+
+.small-label {
+    font-size: $small-font-size;
+}
+
+.error-label {
+    color: $error-font-color;
+    font-size: $small-font-size;
+}
+
+.message-label {
+    color: $brand-color;
+    font-size: $small-font-size;
+}
+
+.input-error-label {
+    @extend .error-label;
+    padding-top: 2px;
+}
+
+.input-addon-error-label {
+    @extend .input-error-label;
+    padding-left: 25px;
+}
+
+.ats-switch {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.ats-switch span.switch-left {
+    background-color: $brand-primary;
+}
+
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    box-shadow: none;
+    border-width: 0 0 1px 0;
+    padding: 0 5px;
+    border-radius: 0;
+
+
+    &:focus {
+        box-shadow: none;
+        border-width: 0 0 2px 0;
+        padding: 0 5px;
+        border-radius: 0;
+    }
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group-addon {
+    border-width: 0;
+    padding: 0px;
+    width: 25px;
+}
+
+.btn {
+    outline: none !important;
+}
+
+.dropdown-menu > li > a {
+    padding: 7px 20px;
+}
+
+.page-center {
+    width: 650px;
+    margin: 15px auto;
+}
+
+.margin-right-left-5 {
+    margin-right: 5px;
+    margin-left:5px;
+}
+
+
+.modal-content{
+    padding:0px;
+}
+
+.modal-header{
+    background-color: $brand-color;
+    border-color: $brand-color;
+    color: #FFFFFF;
+    padding: 5px;
+}
+
+
+.loader {
+    height: 100%;
+    z-index: 5000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    opacity: 0.5;
+    background-color: #000;
+}
+.loader-btn{
+    position: fixed;
+    top: 40%;
+    left: 45%;
+    color: #222121;
+}
+.language-select select {
+    -webkit-appearance: menulist-button;
+    height: 34px;
+}
+.language-select {
+    line-height: 34px;
+    margin-top: 8px;
+}
+
+
+.bottom-bar {
+    padding: 10px 5px;
+}
+
+.padding-top-bottom-20{
+    padding: 20px;
+}
+.padding-b-15{
+    padding-bottom: 15px;
+}
+.padding-b-t-10{
+    padding: 10px 0px;
+}
+.padding-10{
+    padding: 10px;
+}
+.padding-top-10{
+    padding-top: 10px;
+}
+.padding-top-15{
+    padding-top: 15px;
+}
+
+.padding-top-20{
+    padding-top: 20px;
+}
+.padding-top-10{
+    padding-top: 10px;
+}
+.cursor-hand{
+    cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@import "media";
+

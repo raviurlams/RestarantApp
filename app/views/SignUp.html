@@ -1,0 +1,47 @@
+<div class="page-center">
+    <div class="padding-top-15 padding-b-15">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+        <a href="#/" class="title-3" translate="BACK-LABEL"></a>
+    </div>
+    <div class="title-bar" translate="SIGN-UP-LABEL"></div>
+    <form name="signUpForm" novalidate class="padding-10">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" name="firstName" ng-model="newUserProfile.firstName" required class="form-control" autocomplete="off" ng-minlength="2" maxlength="30" placeholder="{{ 'F-NAME' | translate }}" />
+            </div>
+            <div ng-messages="signUpForm.firstName.$error" ng-show="(signUpForm.$submitted || !signUpForm.firstName.$pristine)" class="error-label">
+                <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                <div ng-message="minlength"><span translate="MIN-2"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" name="lastName" ng-model="newUserProfile.lastName" required autocomplete="off" ng-minlength="2" class="form-control" maxlength="30" placeholder="{{ 'L-NAME' | translate }}" />
+            </div>
+            <div ng-messages="signUpForm.lastName.$error" ng-show="(signUpForm.$submitted || !signUpForm.lastName.$pristine)" class="error-label">
+                <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                <div ng-message="minlength"><span translate="MIN-2"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="email" name="emailID" ng-model="newUserProfile.emailID" maxlength="40" autocomplete="off" required class="form-control" placeholder="{{ 'EMAIL-NAME' | translate }}" />
+            </div>
+            <div class="input-error-label" ng-show="formSubmitted && signUpForm.emailID.$error.required" translate="REQUIRED-FIELD"></div>
+            <div class="input-error-label" ng-show="formSubmitted && signUpForm.emailID.$error.email" translate="EMAIL-INVALID"></div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="password" name="password" ng-model="newUserProfile.password" autocomplete="off" required ng-minlength="8" maxlength="20" class="form-control" placeholder="{{ 'P-NAME' | translate }}" />
+            </div>
+            <div ng-messages="signUpForm.password.$error" ng-show="(signUpForm.$submitted || !signUpForm.password.$pristine)" class="error-label">
+                <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                <div ng-message="minlength"><span translate="PASSWORD-MIN-MAX"></span></div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="error-label" ng-show="errorMessage != null">{{errorMessage}}</label>
+            <button class="btn btn-primary btn-sm pull-right" ng-click="onSignUpSubmit(signUpForm)" translate="SIGN-UP-LABEL"></button>
+        </div>
+    </form>
+</div>

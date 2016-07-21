@@ -1,0 +1,91 @@
+<div class="page-center">
+    <div class="padding-b-15">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+        <a href="#/home" class="title-3" translate="HOME"></a>
+    </div>
+    <div class="title-bar" translate="PROFILE"></div>
+    <form name="profileForm" novalidate style="padding: 10px">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" name="firstName" ng-model="userProfile.firstName" required autocomplete="off" ng-minlength="2" class="form-control" maxlength="30" placeholder="{{ 'F-NAME' | translate }}" />
+            </div>
+            <div ng-messages="profileForm.firstName.$error" ng-show="(profileForm.$submitted || !profileForm.firstName.$pristine)" class="error-label">
+                <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                <div ng-message="minlength"><span translate="MIN-2"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" name="lastName" ng-model="userProfile.lastName" required class="form-control" autocomplete="off" ng-minlength="2" maxlength="30" class="form-control" placeholder="{{ 'L-NAME' | translate }}" />
+            </div>
+            <div ng-messages="profileForm.lastName.$error" ng-show="(profileForm.$submitted || !profileForm.lastName.$pristine)" class="error-label">
+                <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                <div ng-message="minlength"><span translate="MIN-2"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="email" name="emailID" ng-model="userProfile.emailID" required class="form-control" autocomplete="off" placeholder="{{ 'EMAIL-NAME' | translate }}" />
+            </div>
+            <div class="input-error-label" ng-show="formSubmitted && profileForm.emailID.$error.required" translate="REQUIRED-FIELD"></div>
+            <div class="input-error-label" ng-show="formSubmitted && profileForm.emailID.$error.email" translate="EMAIL-INVALID"></div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="col-xs-6" style="padding-left: 0">
+                    <input type="password" name="password" value="********" readonly class="form-control" class="form-control" placeholder="{{ 'P-NAME' | translate }}" />
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-primary btn-sm" ng-click="openUpdatePwdDialog()" translate="Label-Update-PASSWORD"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="bottom-bar">
+        <div class="center">
+            &nbsp;
+            <label class="error-label" ng-show="errorMessage != null">{{errorMessage}}</label>
+            <label class="message-label" ng-show="message != null">{{message}}</label>
+        </div>
+        <button class="btn btn-primary btn-sm pull-right" translate="SAVE" ng-click="onUpdateProfileClick(profileForm)"></button>
+    </div>
+</div>
+<!-- Reset Password Dialog -->
+<script type="text/ng-template" id="updatePasswordModal.html">
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <i class="fa fa-times fa-lg cursor-hand pull-right" ng-click="cancel()"></i>
+            <span class="modal-title" translate="CHANGE-PASSWORD-TITLE"></span>
+        </div>
+
+        <div class="modal-body">
+            <form id="updatePwdForm" name="updatePwdForm" novalidate>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="userPassword" autocomplete="off" ng-model="updatePwdInfo.userPassword" ng-keyup="validForm(updatePwdForm)" maxlength="20" placeholder="{{ 'Label-CURRENT-PASSWORD' | translate }}" required>
+                    </div>
+                    <div ng-messages="updatePwdForm.userPassword.$error" ng-show="(updatePwdForm.$submitted || !updatePwdForm.userPassword.$pristine)" class="error-label">
+                        <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="newpasswordStr" autocomplete="off" ng-model="updatePwdInfo.newpasswordStr" ng-minlength="8" ng-maxlength="20" ng-pattern="/^.{8,20}$/" ng-keyup="validForm(updatePwdForm)" placeholder="{{ 'Label-NEW-PASSWORD' | translate }}" required>
+                    <div ng-messages="updatePwdForm.newpasswordStr.$error" ng-show="(updatePwdForm.$submitted || !updatePwdForm.newpasswordStr.$pristine)" class="error-label">
+                        <div ng-message="required"><span translate="REQUIRED-FIELD"></span></div>
+                        <div ng-message="minlength"><span translate="PASSWORD-MIN"></span></div>
+                        <div ng-message="maxlength"><span translate="PASSWORD-MAX"></span></div>
+                        <div ng-message="pattern"><span translate="Password-Pattern-Spl"></span></div>
+                    </div>
+                </div>
+
+
+                <div class="bottom-bar right">
+                    <div ng-show="isInvalidPwd" class="error-label center" ng-bind="message"></div>
+                    <div ng-show="isSuccessPwd" class="message-label center" ng-bind="message"></div>
+
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateNewPassword(updatePwdForm)"><span translate="SAVE"></span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>

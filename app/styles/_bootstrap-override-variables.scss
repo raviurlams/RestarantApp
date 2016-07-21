@@ -1,0 +1,15 @@
+$body-bg: #FFF !default;
+
+$brand-primary: #22BCB9 !default;
+$text-color: #555555 !default;
+$btn-default-color: $text-color !default;
+$dropdown-link-color: $text-color !default;
+$dropdown-link-hover-color: #FFF;
+$dropdown-link-hover-bg: $brand-primary;
+
+//Make flat design
+$input-border-radius: 0px;
+$input-bg: transparent;
+$input-group-addon-bg: transparent;
+$font-size-base: $primary-font-size;
+

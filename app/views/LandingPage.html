@@ -1,0 +1,44 @@
+<div class="box login-box">
+    <div class="center">
+        <div style="display: inline-block" translate="Orderista-ID-Label"></div>
+    </div>
+    <div class="center border-bottom padding-b-15 padding-top-15">
+        <div style="display: inline-block">
+            <button class="btn btn-primary btn-sm" ng-click="onSignUpClick()" translate="SIGNUP-Label"></button>
+        </div>
+    </div>
+    <div>
+        <h5 translate="SIGN-IN-LABEL" ></h5>
+        <br>
+        <form name="loginForm" novalidate>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                    <input type="email" ng-model="emailID" name="emailID" required class="form-control" placeholder="{{ 'EMAIL-NAME' | translate }}" />
+                </div>
+                <div class="input-addon-error-label" ng-show="formSubmitted && loginForm.emailID.$error.required" translate="EMAIL-REQ-ERROR"></div>
+                <div class="input-addon-error-label" ng-show="formSubmitted && loginForm.emailID.$error.email" translate="EMAIL-INVALID"></div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                    <input type="password" name="password" ng-model="password" autocomplete="off" required class="form-control" placeholder="{{ 'P-NAME' | translate }}" />
+                </div>
+                <div class="input-addon-error-label" ng-show="formSubmitted && loginForm.password.$error.required" translate="PWD-REQ-ERROR"></div>
+            </div>
+            <div class="center padding-top-15">
+                <span class="small-label" translate="STAY-SIGN-IN"></span>
+                <toggle-switch ng-model="keepSignedIn" class="switch-mini" on-label="{{ 'Yes-NAME' | translate }}" off-label="{{ 'No-NAME' | translate }}"></toggle-switch>
+            </div>
+            <div class="center padding-top-20">
+                <label class="error-label" ng-show="errorMessage != null">{{errorMessage}}</label>
+            </div>
+            <div class="row right padding-10">
+                <button class="btn btn-primary btn-sm" ng-click="onLoginClick(loginForm)" translate="SIGN-IN-LABEL"></button>
+            </div>
+        </form>
+        <div class="center">
+            <a href="#/forgot-password" translate="Forgot-PWD"></a>
+        </div>
+    </div>
+</div>

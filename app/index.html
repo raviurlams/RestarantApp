@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+<head manifest="orderista.appcache">
+    <meta charset="utf-8">
+    <title>Orderista</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css" />
+    <link rel="stylesheet" href="bower_components/angular-google-places-autocomplete/src/autocomplete.css" />
+    <link rel="stylesheet" href="bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-app="orderistaApp" ng-controller="CommonCtrl">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="top-header" ng-hide="isLoggedin">
+        <img src="/images/Orderista_logo.svg" width="187" height="71" />
+        <!-- Add this later after deciding where to place this nicely -->
+        <!--<div class="pull-right" ng-translate-language-select></div>-->
+    </div>
+    </div>
+    <div class="top-header-after-login" ng-show="isLoggedin">
+        <div class="col-xs-6 top-header-items">
+            <img src="/images/Orderista_logo_white.svg" width="125" height="41" />
+        </div>
+        <div class="col-xs-6">
+            <div class="top-header-items btn-group pull-right">
+                <button type="button" class="btn btn-default dropdown-toggle brand-color" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user fa-lg" aria-hidden="true"></i> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right" style="top: 45px!important;">
+                    <li>
+                        <a href="#/profile" translate="PROFILE-TEXT"></a>
+                    </li>
+                    <li>
+                        <a href="#" translate="PAST_ORDER"></a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li ng-click="signOut()">
+                        <a href="javascript:;" translate="SIGN-OUT"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Add your site or application content here -->
+    <div class="container-fluid">
+        <div ng-view=""></div>
+    </div>
+    <!-- PreLoader -->
+    <div class="loader" ng-show="isLoader">
+        <button class="loader-btn btn btn-primary">
+            <i class="fa fa-spinner fa-spin"></i>
+        </button>
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-79522770-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
+    <script src="bower_components/angular-google-places-autocomplete/dist/autocomplete.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="https://use.fontawesome.com/9a9c0f367d.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxpBAMHItwCXuWf7AbOORG6Gm8lzvh800&libraries=places"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/constants/appConfiguration.js"></script>
+    <script src="scripts/controllers/CommonCtrl.js"></script>
+    <script src="scripts/controllers/UserCtrl.js"></script>
+    <script src="scripts/controllers/RestaurantCtrl.js"></script>
+    <script src="scripts/services/UserService.js"></script>
+    <script src="scripts/services/LocaleService.js"></script>
+    <script src="scripts/services/RestaurantService.js"></script>
+    <script src="scripts/directives/RestaurantInfo.js"></script>
+    <script src="scripts/directives/LanguageSelectDirective.js"></script>
+    <script src="scripts/directives/Validations.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
